@@ -1,6 +1,6 @@
 .DS_Store
 api.txt
 node_modules/*
-components/*
+client/js/vendors/*
 
 build/*
