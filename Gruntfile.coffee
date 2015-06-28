@@ -7,7 +7,6 @@ module.exports = (grunt) ->
 
     port = 7788
   
-    # Project configuration.
     grunt.initConfig
         watch:
             coffee_app:
