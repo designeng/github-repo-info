@@ -10,5 +10,12 @@ define [
         className: "accordion-section"
         template: contributorTemplate
 
+        templateHelpers:
+            avatarSmall: ->
+                @.author.avatar_url + "&s=50"
+
+            avatarBig: ->
+                @.author.avatar_url + "&s=150"
+
         behaviors:
             accordion: {}

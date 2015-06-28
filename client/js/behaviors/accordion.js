@@ -16,7 +16,7 @@ define(["jquery", "underscore", "marionette"], function($, _, Marionette) {
         $('.accordion .accordion-section-title').removeClass('active');
         return $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
       };
-      currentAttrValue = $(event.target).attr('href');
+      currentAttrValue = $(event.target).attr('href') || $(event.target).closest("a").attr('href');
       sectionId = _.last(currentAttrValue.split("/"));
       if ($(event.target).is('.active')) {
         closeSection();

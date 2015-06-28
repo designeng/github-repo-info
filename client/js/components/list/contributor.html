@@ -1,6 +1,9 @@
 <a class="accordion-section-title" href="#/contributors/{{ author.login }}">
-    {{ author.login }}, {{ total }}
+    <img src="{{ avatarSmall }}" class="accordion-section-title-avatar" /><span class="accordion-section-title-login">{{ author.login }}</span>, <span>{{ total }}</span>
 </a>
 <div id="{{ author.login }}" class="accordion-section-content">
-    TEXT...
+    <div>
+        <img src="{{ avatarBig }}" class="accordion-section-content-avatar" />
+    </div>
+    <div>Github account: <a href="{{ author.html_url }}" target="blank">{{ author.login }}</a></div>
 </div>
