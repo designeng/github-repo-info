@@ -1,9 +1,9 @@
 define(["components/list/list", "components/list/collections/forks", "components/list/collections/contributors"], function(ListCollectionView, ForksCollection, ContributorsCollection) {
-  var contributorsCollection, contributorsList;
-  contributorsCollection = new ContributorsCollection();
-  contributorsCollection.fetch();
-  contributorsList = new ListCollectionView({
-    collection: contributorsCollection
+  var forksCollection, forksList;
+  forksCollection = new ForksCollection();
+  forksCollection.fetch();
+  forksList = new ListCollectionView({
+    collection: forksCollection
   });
-  return contributorsList;
+  return forksList;
 });

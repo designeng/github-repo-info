@@ -12,11 +12,11 @@
     </div>
 
     <script id="fork-item-view-template" type="text/html">
-        <%= id %>
+        <%= id %>, <%= created_at %>, <%= unix() %>
     </script>
 
     <script id="contributor-item-view-template" type="text/html">
-        <%= author.login %>
+        <%= author.login %>, <%= total %>
     </script>
 <script>
 // uncomment for connect livereload interaction:
