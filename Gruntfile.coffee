@@ -1,3 +1,5 @@
+path = require "path"
+
 folderMount = (connect, point) ->
     return connect.static path.resolve(point)
 
