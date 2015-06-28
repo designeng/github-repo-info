@@ -4,8 +4,11 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
     tagName: "div",
     className: "accordion-section",
     template: contributorTemplate,
+    ui: {
+      "title": ".accordion-section-title"
+    },
     events: {
-      "click .accordion-section-title": "onSectionTitleClick"
+      "click @ui.title": "onSectionTitleClick"
     },
     onSectionTitleClick: function(event) {
       var author, closeSection, currentAttrValue, openSection;

@@ -10,8 +10,11 @@ define [
         className: "accordion-section"
         template: contributorTemplate
 
+        ui:
+            "title": ".accordion-section-title"
+
         events:
-            "click .accordion-section-title" : "onSectionTitleClick"
+            "click @ui.title" : "onSectionTitleClick"
 
         onSectionTitleClick: (event) ->
             openSection = (selector) ->
