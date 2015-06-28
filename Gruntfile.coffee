@@ -16,8 +16,9 @@ module.exports = (grunt) ->
                 files: ['test/jasmine/coffee/**/**.coffee']
                 tasks: ["coffee-compile-jasmine"]
             js_requireConfig:
-                files: ["client/js/requireConfig.js", "client/js/main.js", "test/jasmine/js/SpecRunner.js", "test/jasmine/js/SpecIndex.js"]
-                tasks: ["concat:main", "concat:jasmine"]
+                files: ["client/js/requireConfig.js", "client/js/requireEnter.js", "test/jasmine/js/SpecRunner.js", "test/jasmine/js/SpecIndex.js"]
+                tasks: ["concat:main", "concat:jasmine
+                "]
             js:
                 files: ["client/js/**/**.js", "test/jasmine/js/**/**.js"]
                 options:
@@ -62,7 +63,7 @@ module.exports = (grunt) ->
             server:
                 options:
                     port: port
-                    base: '.'
+                    base: './client'
                     middleware: (connect, options) ->
                         return [
                             folderMount(connect, options.base)
@@ -70,8 +71,8 @@ module.exports = (grunt) ->
 
         concat:
             main:
-                src: ["client/js/requireConfig.js", "client/js/main.js"]
-                dest: "client/js/supermain.js"
+                src: ["client/js/requireConfig.js", "client/js/requireEnter.js"]
+                dest: "client/js/main.js"
             jasmine:
                 src: ["client/js/requireConfig.js", "test/jasmine/js/SpecRunner.js"]
                 dest: "test/jasmine/js/superSpecRunner.js"
