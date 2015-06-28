@@ -1,7 +1,7 @@
 {
-  "name": "marionette-repo",
+  "name": "github-repo-info",
   "version": "0.0.0",
-  "homepage": "https://github.com/designeng/marionette-repo",
+  "homepage": "https://github.com/designeng/github-repo-info",
   "authors": [
     "Denis Savenok <denissavenok@gmail.com>"
   ],
