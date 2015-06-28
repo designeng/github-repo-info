@@ -1,4 +1,5 @@
 define [
     "marionette"
-], (Marionette) ->
+    "components/list/index"
+], (Marionette, ListComponent) ->
     app = new Marionette.Application()

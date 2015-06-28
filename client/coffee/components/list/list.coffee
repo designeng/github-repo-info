@@ -4,7 +4,7 @@ define [
     "./contributorItemView"
 ], (Marionette, ForkItemView, ContributorItemView) ->
 
-    ListComponent = Marionette.CollectionView.extend
+    ListCollectionView = Marionette.CollectionView.extend
 
         getChildView: (item) ->
             if item.get "id"
