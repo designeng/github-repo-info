@@ -7,3 +7,6 @@ define [
         tagName: "div"
         className: "accordion-section"
         template: forkTemplate
+
+        behaviors:
+            accordion: {}

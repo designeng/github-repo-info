@@ -3,6 +3,9 @@ define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemp
   return ForkItemView = Marionette.ItemView.extend({
     tagName: "div",
     className: "accordion-section",
-    template: forkTemplate
+    template: forkTemplate,
+    behaviors: {
+      accordion: {}
+    }
   });
 });

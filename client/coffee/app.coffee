@@ -2,11 +2,15 @@ define [
     "backbone"
     "marionette"
     "handlebars"
+    "behaviors/index"
     "components/list/index"
-], (Backbone, Marionette, Handlebars, ListComponent) ->
+], (Backbone, Marionette, Handlebars, Behaviors, ListComponent) ->
 
     Marionette.TemplateCache::compileTemplate = (rawTemplate) ->
         Handlebars.compile(rawTemplate)
+
+    Marionette.Behaviors.behaviorsLookup = () ->
+        return Behaviors
     
     app = new Marionette.Application()
 
