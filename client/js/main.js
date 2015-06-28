@@ -18,10 +18,6 @@ require.config({
       name: "jquery",
       main: "jquery",
       location: "vendors/jquery/dist"
-    }, {
-      name: "moment",
-      main: "moment",
-      location: "vendors/moment"
     }
   ],
   shim: {},

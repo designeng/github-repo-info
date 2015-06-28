@@ -6,7 +6,6 @@
     "Denis Savenok <denissavenok@gmail.com>"
   ],
   "dependencies": {
-    "moment": "~2.10.3",
     "requirejs": "~2.1.18",
     "marionette": "~2.4.2"
   }

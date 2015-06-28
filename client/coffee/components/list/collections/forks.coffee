@@ -1,7 +1,6 @@
 define [
     "backbone"
-    "moment"
-], (Backbone, moment) ->
+], (Backbone) ->
 
     Fork = Backbone.Model.extend({})
 
@@ -9,5 +8,6 @@ define [
         url: "https://api.github.com/repos/marionettejs/backbone.marionette/forks"
         model: Fork
 
-        comparator: (a, b) ->
-            return moment(a.attributes.created_at).unix() < moment(b.attributes.created_at).unix()
+        comparator: (model) ->
+            date = new Date(model.get "created_at")
+            return -date.getTime()
