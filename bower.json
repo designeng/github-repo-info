@@ -1,0 +1,13 @@
+{
+  "name": "marionette-repo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/designeng/marionette-repo",
+  "authors": [
+    "Denis Savenok <denissavenok@gmail.com>"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "requirejs": "~2.1.18",
+    "marionette": "~2.4.2"
+  }
+}
