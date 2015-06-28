@@ -8,16 +8,8 @@
 </head>
 <body>
     <div id ="application">
-        <div id ="list">List here</div>
+        <div id ="list"></div>
     </div>
-
-    <script id="fork-item-view-template" type="text/html">
-        <%= id %>, <%= created_at %>, <%= unix() %>
-    </script>
-
-    <script id="contributor-item-view-template" type="text/html">
-        <%= author.login %>, <%= total %>
-    </script>
 <script>
 // uncomment for connect livereload interaction:
 document.write('<script src="http://' + (location.host || 'localhost')

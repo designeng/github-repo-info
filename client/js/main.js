@@ -19,6 +19,18 @@ require.config({
       main: "jquery",
       location: "vendors/jquery/dist"
     }, {
+      name: "handlebars",
+      main: "handlebars",
+      location: "vendors/handlebars"
+    }, {
+      name: "text",
+      main: "text",
+      location: "vendors/text"
+    }, {
+      name: "hbs",
+      main: "hbs",
+      location: "vendors/requirejs-hbs"
+    }, {
       name: "moment",
       main: "moment",
       location: "vendors/moment"

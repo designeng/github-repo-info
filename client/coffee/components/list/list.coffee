@@ -6,6 +6,9 @@ define [
 
     ListCollectionView = Marionette.CollectionView.extend
 
+        tagName: "div"
+        className: "accordion"
+
         getChildView: (item) ->
             if item.get "id"
                 return ForkItemView

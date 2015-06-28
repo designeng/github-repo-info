@@ -1,6 +1,9 @@
 define [
     "marionette"
-], (Marionette) ->
+    "hbs!components/list/contributor"
+], (Marionette, contributorTemplate) ->
 
     ContributorItemView = Marionette.ItemView.extend
-        template: "#contributor-item-view-template"
+        tagName: "div"
+        className: "accordion-section"
+        template: contributorTemplate

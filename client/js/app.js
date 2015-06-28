@@ -1,5 +1,8 @@
-define(["backbone", "marionette", "components/list/index"], function(Backbone, Marionette, ListComponent) {
+define(["backbone", "marionette", "handlebars", "components/list/index"], function(Backbone, Marionette, Handlebars, ListComponent) {
   var app;
+  Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
+    return Handlebars.compile(rawTemplate);
+  };
   app = new Marionette.Application();
   app.addRegions({
     listRegion: "#list"

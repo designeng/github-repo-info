@@ -1,6 +1,8 @@
-define(["marionette"], function(Marionette) {
+define(["marionette", "hbs!components/list/contributor"], function(Marionette, contributorTemplate) {
   var ContributorItemView;
   return ContributorItemView = Marionette.ItemView.extend({
-    template: "#contributor-item-view-template"
+    tagName: "div",
+    className: "accordion-section",
+    template: contributorTemplate
   });
 });

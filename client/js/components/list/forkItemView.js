@@ -1,11 +1,8 @@
-define(["marionette", "moment"], function(Marionette, moment) {
+define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemplate) {
   var ForkItemView;
   return ForkItemView = Marionette.ItemView.extend({
-    template: "#fork-item-view-template",
-    templateHelpers: {
-      unix: function() {
-        return moment(this.created_at).unix();
-      }
-    }
+    tagName: "div",
+    className: "accordion-section",
+    template: forkTemplate
   });
 });

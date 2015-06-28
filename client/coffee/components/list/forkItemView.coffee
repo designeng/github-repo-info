@@ -1,11 +1,9 @@
 define [
     "marionette"
-    "moment"
-], (Marionette, moment) ->
+    "hbs!components/list/fork"
+], (Marionette, forkTemplate) ->
 
     ForkItemView = Marionette.ItemView.extend
-        template: "#fork-item-view-template"
-
-        templateHelpers:
-            unix: () ->
-                return moment(@created_at).unix()
+        tagName: "div"
+        className: "accordion-section"
+        template: forkTemplate

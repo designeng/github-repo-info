@@ -1,8 +1,12 @@
 define [
     "backbone"
     "marionette"
+    "handlebars"
     "components/list/index"
-], (Backbone, Marionette, ListComponent) ->
+], (Backbone, Marionette, Handlebars, ListComponent) ->
+
+    Marionette.TemplateCache::compileTemplate = (rawTemplate) ->
+        Handlebars.compile(rawTemplate)
     
     app = new Marionette.Application()
 
