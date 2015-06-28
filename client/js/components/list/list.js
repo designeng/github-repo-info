@@ -7,6 +7,9 @@ define(["marionette", "./forkItemView", "./contributorItemView"], function(Mario
       } else {
         return ContributorItemView;
       }
+    },
+    onRender: function() {
+      return console.debug("ListCollectionView rendered");
     }
   });
 });

@@ -11,3 +11,6 @@ define [
                 return ForkItemView
             else
                 return ContributorItemView
+
+        onRender: ->
+            console.debug "ListCollectionView rendered"

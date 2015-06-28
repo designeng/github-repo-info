@@ -7,14 +7,16 @@
     <script type="text/javascript" data-main="js/main" src="/js/vendors/requirejs/require.js"></script>
 </head>
 <body>
-    <div id ="application"></div>
+    <div id ="application">
+        <div id ="list">List here</div>
+    </div>
 
     <script id="fork-item-view-template" type="text/html">
-        fork-item-view-template <%= id %>
+        <%= id %>
     </script>
 
     <script id="contributor-item-view-template" type="text/html">
-        contributor-item-view-template <%= author %>
+        <%= author.login %>
     </script>
 <script>
 // uncomment for connect livereload interaction:
