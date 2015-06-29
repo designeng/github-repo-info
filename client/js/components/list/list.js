@@ -10,12 +10,6 @@ define(["marionette", "./forkItemView", "./contributorItemView", "components/lis
         return ContributorItemView;
       }
     },
-    collectionEvents: {
-      "sync": "render"
-    },
-    onRender: function() {
-      return console.debug("RENDERED");
-    },
     setCollection: function(mode) {
       if (mode === "contributors") {
         this.collection = new ContributorsCollection();

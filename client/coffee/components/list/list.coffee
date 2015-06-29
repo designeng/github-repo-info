@@ -17,12 +17,6 @@ define [
             else
                 return ContributorItemView
 
-        collectionEvents:
-            "sync": "render"
-
-        onRender: ->
-            console.debug "RENDERED"
-
         setCollection: (mode) ->
             if mode is "contributors"
                 @.collection = new ContributorsCollection()
