@@ -43,6 +43,11 @@ require.config
             location: "vendors/requirejs-hbs"
         },
         {
+            name: "meld"
+            main: "meld"
+            location: "vendors/meld"
+        }
+        {
             name: "moment"
             main: "moment"
             location: "vendors/moment"

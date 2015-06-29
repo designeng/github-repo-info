@@ -1,4 +1,4 @@
-define(["marionette", "./forkItemView", "./contributorItemView"], function(Marionette, ForkItemView, ContributorItemView) {
+define(["marionette", "./forkItemView", "./contributorItemView", "components/list/collections/forks", "components/list/collections/contributors"], function(Marionette, ForkItemView, ContributorItemView, ForksCollection, ContributorsCollection) {
   var ListCollectionView;
   return ListCollectionView = Marionette.CollectionView.extend({
     tagName: "div",
@@ -10,8 +10,21 @@ define(["marionette", "./forkItemView", "./contributorItemView"], function(Mario
         return ContributorItemView;
       }
     },
+    collectionEvents: {
+      "sync": "render"
+    },
     onRender: function() {
-      return console.debug("ListCollectionView rendered");
+      return console.debug("RENDERED");
+    },
+    setCollection: function(mode) {
+      if (mode === "contributors") {
+        this.collection = new ContributorsCollection();
+        this.collection.fetch();
+      }
+      if (mode === "forks") {
+        this.collection = new ForksCollection();
+        return this.collection.fetch();
+      }
     }
   });
 });

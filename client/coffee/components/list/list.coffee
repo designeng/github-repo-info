@@ -2,7 +2,9 @@ define [
     "marionette"
     "./forkItemView"
     "./contributorItemView"
-], (Marionette, ForkItemView, ContributorItemView) ->
+    "components/list/collections/forks"
+    "components/list/collections/contributors"
+], (Marionette, ForkItemView, ContributorItemView, ForksCollection, ContributorsCollection) ->
 
     ListCollectionView = Marionette.CollectionView.extend
 
@@ -15,5 +17,16 @@ define [
             else
                 return ContributorItemView
 
+        collectionEvents:
+            "sync": "render"
+
         onRender: ->
-            console.debug "ListCollectionView rendered"
+            console.debug "RENDERED"
+
+        setCollection: (mode) ->
+            if mode is "contributors"
+                @.collection = new ContributorsCollection()
+                @collection.fetch()
+            if mode is "forks"
+                @.collection = new ForksCollection()
+                @collection.fetch()
