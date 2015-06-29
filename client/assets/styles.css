@@ -80,6 +80,10 @@ a {
     display: none;
 }
 
+.original-fork-name {
+    color: red;
+}
+
 /* ========== switcher component ========== */
 
 .switcher-component {

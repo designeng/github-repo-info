@@ -1,6 +1,11 @@
 <a class="accordion-section-title" href="#/forks/{{ id }}">
-    {{ id }}, {{ created_at }}
+    <span class="forked-by">{{ forkedBy }}</span>/<span class="original-fork-name">{{ originalForkName }}</span>
 </a>
 <div id="{{ id }}" class="accordion-section-content">
-    TEXT FORK
+    <div>Owner login: <a href="{{ owner.html_url }}" target="blank">{{ owner.login }}</a></div>
+    <div>Description: {{ description }}</div>
+    <div>Privacy flag: {{ private }}</div>
+    <div>Language: {{ language }}</div>
+    <div>Created at: {{ created_at }}</div>
+    <div>Updated at: {{ updated_at }}</div>
 </div>

@@ -4,6 +4,14 @@ define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemp
     tagName: "div",
     className: "accordion-section",
     template: forkTemplate,
+    templateHelpers: {
+      forkedBy: function() {
+        return this.full_name.split("/")[0];
+      },
+      originalForkName: function() {
+        return this.full_name.split("/")[1];
+      }
+    },
     behaviors: {
       accordion: {}
     }
