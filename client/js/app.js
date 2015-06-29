@@ -45,10 +45,12 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
       });
     },
     showContributorsList: function() {
-      return this._populateList("contributors");
+      this._populateList("contributors");
+      return switchComponent.setSwitcherState("contributors");
     },
     showForksList: function() {
-      return this._populateList("forks");
+      this._populateList("forks");
+      return switchComponent.setSwitcherState("forks");
     }
   });
   appRouter = new Marionette.AppRouter({

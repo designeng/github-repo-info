@@ -10,12 +10,14 @@ define [
         template: switchLayoutTemplate
 
         regions:
-            selectControlRegion: "#selectControl"
+            selectControlRegion: "#select-control"
 
         onRender: ->
             @.selectControlRegion.show switcherView
 
-    switchComponent = new SwitchLayout({
-    })
+        setSwitcherState: (state) ->
+            @.selectControlRegion.currentView.setSwitcherState(state)
+
+    switchComponent = new SwitchLayout()
 
     return switchComponent

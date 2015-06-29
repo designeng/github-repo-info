@@ -1,15 +1,26 @@
-define(["marionette", "backbone", "hbs!components/switch/switcherView"], function(Marionette, Backbone, switcherViewTemplate) {
+define(["marionette", "backbone", "underscore", "hbs!components/switch/switcherView"], function(Marionette, Backbone, _, switcherViewTemplate) {
   var SwitcherView;
   return SwitcherView = Marionette.ItemView.extend({
     template: switcherViewTemplate,
+    setSwitcherState: function(state) {
+      return this.ui.state.text(state);
+    },
     ui: {
-      "selector": ".switch-select"
+      "switcher": "#switcher-ui",
+      "item": "ul.dropdown li",
+      "state": "span.switcher-current-state"
     },
     events: {
-      "change @ui.selector": "onChange"
+      "click @ui.switcher": "onSwitcherClick",
+      "click @ui.item": "onItemSelect"
     },
-    onChange: function(event) {
-      return window.location.href = "#/" + event.target.value.toLowerCase();
+    onSwitcherClick: function(event) {
+      $(event.target).toggleClass('active');
+      return event.stopPropagation();
+    },
+    onItemSelect: function(event) {
+      this.ui.state.text($(event.target).text().toLowerCase());
+      return this.$el.find(".switcher-wrapper").removeClass('active');
     }
   });
 });

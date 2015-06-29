@@ -1,17 +1,29 @@
 define [
     "marionette"
     "backbone"
+    "underscore"
     "hbs!components/switch/switcherView"
-], (Marionette, Backbone, switcherViewTemplate) ->
+], (Marionette, Backbone, _, switcherViewTemplate) ->
 
     SwitcherView = Marionette.ItemView.extend
         template: switcherViewTemplate
 
+        setSwitcherState: (state) ->
+            @ui.state.text state
+
         ui:
-            "selector": ".switch-select"
+            "switcher"  : "#switcher-ui"
+            "item"      : "ul.dropdown li"
+            "state"     : "span.switcher-current-state"
 
         events:
-            "change @ui.selector": "onChange"
+            "click @ui.switcher"    : "onSwitcherClick"
+            "click @ui.item"        : "onItemSelect"
 
-        onChange: (event) ->
-            window.location.href = "#/" + event.target.value.toLowerCase()
+        onSwitcherClick: (event) ->
+            $(event.target).toggleClass('active')
+            event.stopPropagation()
+
+        onItemSelect: (event) ->
+            @ui.state.text $(event.target).text().toLowerCase()
+            @$el.find(".switcher-wrapper").removeClass('active')

@@ -53,9 +53,11 @@ define [
 
         showContributorsList: ->
             @._populateList "contributors"
+            switchComponent.setSwitcherState "contributors"
 
         showForksList: ->
             @._populateList "forks"
+            switchComponent.setSwitcherState "forks"
 
     appRouter = new Marionette.AppRouter
         controller: new AppRouterController
