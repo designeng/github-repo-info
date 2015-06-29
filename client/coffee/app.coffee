@@ -6,30 +6,47 @@ define [
     "behaviors/index"
     "components/switch/index"
     "components/list/list"
-], (Backbone, Marionette, Handlebars, meld, Behaviors, switchComponent, ListCollectionView) ->
+    "components/preloader/index"
+], (Backbone, Marionette, Handlebars, meld, Behaviors, switchComponent, ListCollectionView, preloaderComponent) ->
 
     Marionette.TemplateCache::compileTemplate = (rawTemplate) ->
         Handlebars.compile(rawTemplate)
 
     Marionette.Behaviors.behaviorsLookup = () ->
         return Behaviors
+
+    hidePreloader = ->
+        preloaderComponent.hide()
+
+    showPreloader = ->
+        preloaderComponent.show()
+
+    loadInstance = (ViewClass, beforeRenderCallback, afterRenderCallback) ->
+        beforeRenderCallback()
+        return new ViewClass({
+            onRenderCallback: afterRenderCallback
+        })
     
     app = new Marionette.Application()
 
     app.addRegions
-        switchRegion: "#switch"
-        listRegion: "#list"
+        preloaderRegion     : "#preloader"
+        switchRegion        : "#switch"
+        listRegion          : "#list"
 
+    app.preloaderRegion.show preloaderComponent
     app.switchRegion.show switchComponent
 
     AppRouterController = Marionette.Object.extend
         initialize: ->
             meld.before @, "_populateList", () =>
                 app.listRegion.empty()
-                @.listComponent = new ListCollectionView()
+                @.listComponent = loadInstance(ListCollectionView, showPreloader, hidePreloader)
 
             meld.after @, "_populateList", () =>
-                app.listRegion.show @.listComponent
+                setTimeout () =>
+                    app.listRegion.show @.listComponent, {forceShow: true}
+                , 100
 
         _populateList: (collectionMode) ->
             @.listComponent.setCollection collectionMode

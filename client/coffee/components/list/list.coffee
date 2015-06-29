@@ -11,6 +11,9 @@ define [
         tagName: "div"
         className: "accordion"
 
+        initialize: ->
+            @onRenderCallback = Marionette.getOption @, "onRenderCallback"
+
         getChildView: (item) ->
             if item.get "id"
                 return ForkItemView
@@ -24,3 +27,6 @@ define [
             if mode is "forks"
                 @.collection = new ForksCollection()
                 @collection.fetch()
+
+        onRender: ->
+            @onRenderCallback()

@@ -3,6 +3,9 @@ define(["marionette", "./forkItemView", "./contributorItemView", "components/lis
   return ListCollectionView = Marionette.CollectionView.extend({
     tagName: "div",
     className: "accordion",
+    initialize: function() {
+      return this.onRenderCallback = Marionette.getOption(this, "onRenderCallback");
+    },
     getChildView: function(item) {
       if (item.get("id")) {
         return ForkItemView;
@@ -19,6 +22,9 @@ define(["marionette", "./forkItemView", "./contributorItemView", "components/lis
         this.collection = new ForksCollection();
         return this.collection.fetch();
       }
+    },
+    onRender: function() {
+      return this.onRenderCallback();
     }
   });
 });
