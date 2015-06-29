@@ -2,11 +2,13 @@
     <img src="{{ avatarSmall }}" class="accordion-section-title-avatar" /><span class="accordion-section-title-login">{{ author.login }}</span>
 </a>
 <div id="{{ author.login }}" class="accordion-section-content">
-    <div>
+    <div class="contributor-avatar">
         <img src="{{ avatarBig }}" class="accordion-section-content-avatar" />
     </div>
-    <div>Github account: <a href="{{ author.html_url }}" target="blank">{{ author.login }}</a></div>
-    <div>Total commits count: {{ total }}</div>
-    <div>Additions: <span class="contributor-additions">{{ additions }} ++</span></div>
-    <div>Deletions: <span class="contributor-deletions">{{ deletions }} --</span></div>
+    <div class="contributor-info">
+        <div>Github account: <a href="{{ author.html_url }}" target="blank">{{ author.login }}</a></div>
+        <div>Total commits count: {{ total }}</div>
+        <div>Additions: <span class="contributor-additions">{{ additions }} ++</span></div>
+        <div>Deletions: <span class="contributor-deletions">{{ deletions }} --</span></div>
+    </div>
 </div>

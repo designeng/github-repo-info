@@ -84,12 +84,19 @@ a {
     color: red;
 }
 
+.contributor-avatar{
+    float: left;
+}
+
 .contributor-additions{
     color: green;
 }
 
 .contributor-deletions{
     color: red;
+}
+
+.contributor-info{
 }
 
 
