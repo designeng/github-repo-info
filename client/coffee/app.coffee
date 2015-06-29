@@ -38,6 +38,9 @@ define [
     app.switchRegion.show switchComponent
 
     AppRouterController = Marionette.Object.extend
+        _populateList: (collectionMode) ->
+            @.listComponent.setCollection collectionMode
+
         initialize: ->
             meld.before @, "_populateList", () =>
                 app.listRegion.empty()
@@ -47,9 +50,6 @@ define [
                 setTimeout () =>
                     app.listRegion.show @.listComponent, {forceShow: true}
                 , 100
-
-        _populateList: (collectionMode) ->
-            @.listComponent.setCollection collectionMode
 
         showContributorsList: ->
             @._populateList "contributors"

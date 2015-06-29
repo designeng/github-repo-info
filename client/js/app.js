@@ -27,6 +27,9 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
   app.preloaderRegion.show(preloaderComponent);
   app.switchRegion.show(switchComponent);
   AppRouterController = Marionette.Object.extend({
+    _populateList: function(collectionMode) {
+      return this.listComponent.setCollection(collectionMode);
+    },
     initialize: function() {
       var _this = this;
       meld.before(this, "_populateList", function() {
@@ -40,9 +43,6 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
           });
         }, 100);
       });
-    },
-    _populateList: function(collectionMode) {
-      return this.listComponent.setCollection(collectionMode);
     },
     showContributorsList: function() {
       return this._populateList("contributors");
