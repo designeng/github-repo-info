@@ -10,6 +10,16 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
       },
       avatarBig: function() {
         return this.author.avatar_url + "&s=150";
+      },
+      additions: function() {
+        return _.reduce(this.weeks, function(result, obj) {
+          return result = +result + obj.a;
+        }, 0);
+      },
+      deletions: function() {
+        return _.reduce(this.weeks, function(result, obj) {
+          return result = +result + obj.d;
+        }, 0);
       }
     },
     behaviors: {

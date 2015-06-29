@@ -84,6 +84,15 @@ a {
     color: red;
 }
 
+.contributor-additions{
+    color: green;
+}
+
+.contributor-deletions{
+    color: red;
+}
+
+
 /* ========== switcher component ========== */
 
 .switcher-component {
