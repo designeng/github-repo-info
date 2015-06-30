@@ -13,12 +13,12 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
       },
       additions: function() {
         return _.reduce(this.weeks, function(result, obj) {
-          return result = +obj.a;
+          return result + obj.a;
         }, 0);
       },
       deletions: function() {
         return _.reduce(this.weeks, function(result, obj) {
-          return result = +obj.d;
+          return result + obj.b;
         }, 0);
       }
     },

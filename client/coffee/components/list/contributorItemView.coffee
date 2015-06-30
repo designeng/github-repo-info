@@ -19,12 +19,12 @@ define [
 
             additions: ->
                 return _.reduce @.weeks, (result, obj) ->
-                    result =+ obj.a
+                    return result + obj.a
                 , 0
 
             deletions: ->
                 return _.reduce @.weeks, (result, obj) ->
-                    result =+ obj.d
+                    return result + obj.b
                 , 0
 
         behaviors:
