@@ -42,6 +42,31 @@ https://github-repo-info.herokuapp.com
 </tr>
 </table>
 
++ Utils and buisness logic objects
+
+<table>
+<tr>
+  <th>Object name</th>
+  <th>Description</th>
+  <th>Notes</th>
+</tr>
+<tr>
+  <td>AjaxRequest</td>
+  <td>Simple preloader with `hide` and `show` methods to display loading process</td>
+  <td> - </td>
+</tr>
+<tr>
+  <td>ClientIp</td>
+  <td>ClientIp is defined on client side for simplicity (TODO: it can be defined with [node-ipware](https://github.com/un33k/node-ipware) on the server side).</td>
+  <td> - </td>
+</tr>
+<tr>
+  <td>Storage</td>
+  <td>To avoid global vars we store recieved clientIp in storage object.</td>
+  <td> - </td>
+</tr>
+</table>
+
 ####Server
 + Api
 
