@@ -1,7 +1,6 @@
 .DS_Store
 api.txt
 node_modules/*
-client/js/vendors/*
 
 db.development.sqlite
 
