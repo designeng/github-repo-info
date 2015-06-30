@@ -84,9 +84,14 @@ a {
     color: red;
 }
 
-.contributor-avatar{
+.contributor-avatar-wrapper{
     float: left;
     margin-right: 10px;
+}
+
+.contributor-avatar {
+    width: 150px;
+    height: 150px;
 }
 
 .contributor-additions{
@@ -136,7 +141,7 @@ a {
 
 .fork-info {
     float: left;
-    margin-right: 10px;
+    margin-right: 50px;
 }
 
 button.like{
@@ -145,9 +150,8 @@ button.like{
 
 button.dislike {
     cursor: pointer;
+    margin-top: 12px;
 }
-
-/* ========== switcher component ========== */
 
 .switcher-component {
     position: absolute;

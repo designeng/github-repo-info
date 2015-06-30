@@ -1,4 +1,4 @@
-define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemplate) {
+define(["marionette", "moment", "hbs!components/list/fork"], function(Marionette, moment, forkTemplate) {
   var ForkItemView;
   return ForkItemView = Marionette.ItemView.extend({
     tagName: "div",
@@ -10,6 +10,12 @@ define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemp
       },
       originalForkName: function() {
         return this.full_name.split("/")[1];
+      },
+      createdAt: function() {
+        return moment(this.created_at).format("DD/MM/YYYY hh:mm:ss");
+      },
+      updatedAt: function() {
+        return moment(this.updated_at).format("DD/MM/YYYY hh:mm:ss");
       }
     },
     behaviors: {
