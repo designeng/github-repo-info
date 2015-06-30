@@ -80,7 +80,9 @@ define [
             new AjaxRequest("/api/likes", data, "POST", "application/json")
 
         sendPublicRateRequest: ->
-            new AjaxRequest("/api/likes/" + @.view.getEntityType() + "/" + @.view.getEntityId(), null , "GET", "application/json")
+            type    = @.view.getEntityType()
+            id      = @.view.getEntityId()
+            new AjaxRequest("/api/likes/#{type}/#{id}", null , "GET", "application/json")
 
         onDestroy: ->
             _.each @.removers, (remover) ->
