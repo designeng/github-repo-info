@@ -20,3 +20,6 @@ define [
 
         getEntityType: ->
             return "fork"
+
+        getEntityId: ->
+            return @.model.get "id"

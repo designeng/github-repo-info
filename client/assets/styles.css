@@ -106,6 +106,17 @@ a {
     float: left;
 }
 
+.fork-like-block {
+    width: 20px;
+    padding-top: 10px;
+    float: left;
+}
+
+.fork-info {
+    float: left;
+    margin-right: 10px;
+}
+
 .like-wrapper {
     cursor: pointer;
 }

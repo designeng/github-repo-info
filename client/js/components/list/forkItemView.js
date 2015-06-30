@@ -17,6 +17,9 @@ define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemp
     },
     getEntityType: function() {
       return "fork";
+    },
+    getEntityId: function() {
+      return this.model.get("id");
     }
   });
 });
