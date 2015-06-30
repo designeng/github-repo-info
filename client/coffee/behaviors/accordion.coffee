@@ -50,20 +50,19 @@ define [
 
         onLikeClick: ->
             data = 
-                ip          : storage.clientIp
+                clientIP    : storage.clientIp
                 entityTYPE  : @.view.getEntityType()
                 entityID    : @.view.getEntityId()
                 like        : true
-            console.debug "like data", data
-            return data
+            return JSON.stringify data
 
         onDislikeClick: ->
             data = 
-                ip          : storage.clientIp
+                clientIp    : storage.clientIp
                 entityTYPE  : @.view.getEntityType()
                 entityID    : @.view.getEntityId()
                 like        : false
-            return data
+            return JSON.stringify data
 
         afterPreferenceClick: (data) ->
             new AjaxRequest("/api/likes", data, "POST", "application/json")

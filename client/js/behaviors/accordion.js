@@ -40,23 +40,22 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     onLikeClick: function() {
       var data;
       data = {
-        ip: storage.clientIp,
+        clientIP: storage.clientIp,
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
         like: true
       };
-      console.debug("like data", data);
-      return data;
+      return JSON.stringify(data);
     },
     onDislikeClick: function() {
       var data;
       data = {
-        ip: storage.clientIp,
+        clientIp: storage.clientIp,
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
         like: false
       };
-      return data;
+      return JSON.stringify(data);
     },
     afterPreferenceClick: function(data) {
       return new AjaxRequest("/api/likes", data, "POST", "application/json");

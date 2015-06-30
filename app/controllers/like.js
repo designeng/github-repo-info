@@ -10,6 +10,8 @@ var LikeController = {
             var entityID    = req.param('entityID');
             var like        = req.param('like');
 
+            console.log(ip, entityID);
+
             models.Like.create({
                 ip: ip,
                 entityTYPE: entityTYPE,
