@@ -87,6 +87,7 @@ a {
 .contributor-avatar-wrapper{
     float: left;
     margin-right: 10px;
+    padding-bottom: 13px;
 }
 
 .contributor-avatar {
@@ -142,6 +143,7 @@ a {
 .fork-info {
     float: left;
     margin-right: 50px;
+    padding-bottom: 15px;
 }
 
 button.like{
