@@ -73,7 +73,7 @@ https://github-repo-info.herokuapp.com
 
 + `requireConfig` and `requireEnter` just two parts of `main` file and assembled together with grunt task during the development process. `requireEnter` is logic enter point for our one-page application.
 
-+ 
++ [meld.js](https://github.com/cujojs/meld) used for separation of concerns between methods within a class.
 
 ####Server
 + Api
