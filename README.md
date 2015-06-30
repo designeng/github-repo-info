@@ -17,7 +17,30 @@ https://github-repo-info.herokuapp.com
 
 ###Structure description
 ####Client
-+ 
++ Components structure
+
+<table>
+<tr>
+  <th>Component name</th>
+  <th>Description</th>
+  <th></th>
+</tr>
+<tr>
+  <td>preloader</td>
+  <td>Simple preloader with `hide` and `show` methods to display loading process</td>
+  <td></td>
+</tr>
+<tr>
+  <td>list</td>
+  <td>Vertical expandable list. One of the subviews (ContributorItemView, ForkItemView) will be choosed for info depending on the model fields and current route.</td>
+  <td></td>
+</tr>
+<tr>
+  <td>swither</td>
+  <td>Drop-down vertical control for switching between routes (contributors, forks)</td>
+  <td></td>
+</tr>
+</table>
 
 ####Server
 + Api
