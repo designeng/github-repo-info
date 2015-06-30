@@ -24,6 +24,14 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
     },
     behaviors: {
       accordion: {}
+    },
+    getEntityType: function() {
+      return "contributor";
+    },
+    getEntityId: function() {
+      var author;
+      author = this.model.get("author");
+      return author.login;
     }
   });
 });

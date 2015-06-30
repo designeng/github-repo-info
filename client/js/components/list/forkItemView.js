@@ -14,6 +14,9 @@ define(["marionette", "hbs!components/list/fork"], function(Marionette, forkTemp
     },
     behaviors: {
       accordion: {}
+    },
+    getEntityType: function() {
+      return "fork";
     }
   });
 });

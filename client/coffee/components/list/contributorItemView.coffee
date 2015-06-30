@@ -29,3 +29,10 @@ define [
 
         behaviors:
             accordion: {}
+
+        getEntityType: ->
+            return "contributor"
+
+        getEntityId: ->
+            author = @.model.get "author"
+            return author.login

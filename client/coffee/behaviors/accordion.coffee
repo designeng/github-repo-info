@@ -2,14 +2,27 @@ define [
     "jquery"
     "underscore"
     "marionette"
-], ($, _, Marionette) ->
+    "meld"
+    "utils/ajax/ajaxRequest"
+    "utils/storage/index"
+], ($, _, Marionette, meld, AjaxRequest, storage) ->
 
     AccordionBehavior = Marionette.Behavior.extend
+
+        initialize: ->
+            @.removers = []
+            @.removers.push meld.afterReturning @, "onLikeClick", @.afterPreferenceClick
+            @.removers.push meld.afterReturning @, "onDislikeClick", @.afterPreferenceClick
+
         ui:
-            "title": ".accordion-section-title"
+            "title"     : ".accordion-section-title"
+            "like"      : ".like-wrapper"
+            "dislike"   : ".dislike-wrapper"
 
         events:
-            "click @ui.title" : "onSectionTitleClick"
+            "click @ui.title"   : "onSectionTitleClick"
+            "click @ui.like"    : "onLikeClick"
+            "click @ui.dislike" : "onDislikeClick"
 
         onSectionTitleClick: (event) ->
             openSection = (selector) ->
@@ -34,3 +47,23 @@ define [
                 openSection("##{sectionId}")
 
             event.preventDefault()
+
+        onLikeClick: ->
+            data = 
+                ip          : storage.clientIp
+                entityTYPE  : @.view.getEntityType()
+                entityID    : @.view.getEntityId()
+                like        : true
+            console.debug "like data", data
+            return data
+
+        onDislikeClick: ->
+            data = 
+                ip          : storage.clientIp
+                entityTYPE  : @.view.getEntityType()
+                entityID    : @.view.getEntityId()
+                like        : false
+            return data
+
+        afterPreferenceClick: (data) ->
+            new AjaxRequest("/api/likes", data, "POST", "application/json")

@@ -17,3 +17,6 @@ define [
 
         behaviors:
             accordion: {}
+
+        getEntityType: ->
+            return "fork"
