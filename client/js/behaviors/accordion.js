@@ -1,6 +1,17 @@
 define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", "utils/storage/index"], function($, _, Marionette, meld, AjaxRequest, storage) {
   var AccordionBehavior;
   return AccordionBehavior = Marionette.Behavior.extend({
+    api: {
+      isVoicable: function(ip, type, id) {
+        return "/api/likes/" + ip + "/" + type + "/" + id;
+      },
+      preference: function() {
+        return "/api/likes";
+      },
+      publicRate: function(type, id) {
+        return "/api/likes/" + type + "/" + id;
+      }
+    },
     initialize: function() {
       this.data = {
         clientIP: storage.clientIp
@@ -22,8 +33,12 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       "click @ui.dislike": "onDislikeClick"
     },
     onSectionTitleClick: function(event) {
-      var aTagElement, closeSection, currentAttrValue, openSection, sectionId,
+      var aTagElement, closeSection, currentAttrValue, id, ip, openSection, sectionId, type,
         _this = this;
+      ip = storage.clientIp;
+      type = this.view.getEntityType();
+      id = this.view.getEntityId();
+      new AjaxRequest(this.api.isVoicable(ip, type, id), null, "GET", "application/json").done(function(result) {});
       openSection = function(selector) {
         _this.sendPublicRateRequest().then(function(res) {
           var publicRate;
@@ -76,13 +91,13 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return JSON.stringify(this.data);
     },
     afterPreferenceClick: function(data) {
-      return new AjaxRequest("/api/likes", data, "POST", "application/json");
+      return new AjaxRequest(this.api.preference(), data, "POST", "application/json");
     },
     sendPublicRateRequest: function() {
       var id, type;
       type = this.view.getEntityType();
       id = this.view.getEntityId();
-      return new AjaxRequest("/api/likes/" + type + "/" + id, null, "GET", "application/json");
+      return new AjaxRequest(this.api.publicRate(type, id), null, "GET", "application/json");
     },
     onDestroy: function() {
       return _.each(this.removers, function(remover) {

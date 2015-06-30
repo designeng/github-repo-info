@@ -9,6 +9,9 @@ router.route("/likes")
     .post(LikeController.post)
     .get(LikeController.get);
 
+router.route("/likes/:ip/:type/:id")
+    .get(LikeController.isAbleToVoice);
+
 router.route("/likes/:type/:id")
     .get(LikeController.getPublicRate);
 

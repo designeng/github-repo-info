@@ -9,6 +9,14 @@ define [
 
     AccordionBehavior = Marionette.Behavior.extend
 
+        api:
+            isVoicable: (ip, type, id) ->
+                return "/api/likes/#{ip}/#{type}/#{id}"
+            preference: ->
+                return "/api/likes"
+            publicRate: (type, id) ->
+                return "/api/likes/#{type}/#{id}"
+
         initialize: ->
             @.data = 
                 clientIP    : storage.clientIp
@@ -30,6 +38,13 @@ define [
             "click @ui.dislike" : "onDislikeClick"
 
         onSectionTitleClick: (event) ->
+            ip      = storage.clientIp
+            type    = @.view.getEntityType()
+            id      = @.view.getEntityId()
+
+            new AjaxRequest(@api.isVoicable(ip, type, id), null , "GET", "application/json").done (result) ->
+
+
             openSection = (selector) =>
                 @.sendPublicRateRequest().then (res) =>
                     publicRate = _.reduce res.likes, (rate, item) ->
@@ -77,12 +92,12 @@ define [
             return JSON.stringify @.data
 
         afterPreferenceClick: (data) ->
-            new AjaxRequest("/api/likes", data, "POST", "application/json")
+            new AjaxRequest(@api.preference(), data, "POST", "application/json")
 
         sendPublicRateRequest: ->
             type    = @.view.getEntityType()
             id      = @.view.getEntityId()
-            new AjaxRequest("/api/likes/#{type}/#{id}", null , "GET", "application/json")
+            new AjaxRequest(@api.publicRate(type, id), null , "GET", "application/json")
 
         onDestroy: ->
             _.each @.removers, (remover) ->
