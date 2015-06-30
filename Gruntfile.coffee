@@ -99,4 +99,4 @@ module.exports = (grunt) ->
     grunt.registerTask "server", ["connect"]
 
     # TODO: nodemon does not watch .coffee - open issue
-    grunt.registerTask "nd", ["nodemon"]
+    grunt.registerTask "nodemon", ["nodemon"]
