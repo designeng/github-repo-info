@@ -17,15 +17,11 @@ module.exports = (grunt) ->
             coffee_app:
                 files: ['client/coffee/**/**.coffee']
                 tasks: ["coffee-compile-app"]
-            coffee_jasmine:
-                files: ['test/jasmine/coffee/**/**.coffee']
-                tasks: ["coffee-compile-jasmine"]
             js_requireConfig:
-                files: ["client/js/requireConfig.js", "client/js/requireEnter.js", "test/jasmine/js/SpecRunner.js", "test/jasmine/js/SpecIndex.js"]
-                tasks: ["concat:main", "concat:jasmine
-                "]
+                files: ["client/js/requireConfig.js", "client/js/requireEnter.js"]
+                tasks: ["concat:main"]
             js:
-                files: ["client/js/**/**.js", "test/jasmine/js/**/**.js"]
+                files: ["client/js/**/**.js"]
                 options:
                     livereload: true
 
@@ -94,7 +90,6 @@ module.exports = (grunt) ->
 
     # compilation
     grunt.registerTask "coffee-compile-app",            ["newer:coffee:app"]
-    grunt.registerTask "coffee-compile-jasmine",        ["newer:coffee:jasmine"]
 
     grunt.registerTask "server", ["connect"]
 
