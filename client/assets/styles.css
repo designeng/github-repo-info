@@ -109,7 +109,22 @@ a {
 .fork-like-block {
     width: 20px;
     padding-top: 10px;
+    margin-right: 10px;
     float: left;
+}
+
+.fork-rate-block {
+    width: 20px;
+    padding-top: 10px;
+    float: left;
+}
+
+.likes-rate {
+
+}
+
+.dislikes-rate {
+    padding-top: 12px;
 }
 
 .fork-info {

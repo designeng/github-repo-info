@@ -12,7 +12,9 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     ui: {
       "title": ".accordion-section-title",
       "like": ".like-wrapper",
-      "dislike": ".dislike-wrapper"
+      "dislike": ".dislike-wrapper",
+      "likesRate": ".likes-rate",
+      "dislikesRate": ".dislikes-rate"
     },
     events: {
       "click @ui.title": "onSectionTitleClick",
@@ -25,23 +27,17 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       openSection = function(selector) {
         _this.sendPublicRateRequest().then(function(res) {
           var publicRate;
-          console.debug("------------------------", res);
-          publicRate = _.reduce(res.likes, function(result, item) {
-            console.debug("item.like", item.like);
+          publicRate = _.reduce(res.likes, function(rate, item) {
             if (item.like === true) {
-              console.debug("result.likes....", result.likes);
-              return result.likes.push(1);
+              rate[0]++;
+              return rate;
             } else {
-              console.debug("result.dislikes....", result.dislikes);
-              return result.dislikes.push(1);
+              rate[1]++;
+              return rate;
             }
-          }, {
-            likes: [],
-            dislikes: []
-          });
-          console.debug(publicRate.likes, publicRate.dislikes, publicRate);
-          $(selector).find(".likes-rate").text(publicRate.likes.length);
-          return $(selector).find(".dislikes-rate").text(publicRate.dislikes.length);
+          }, [0, 0]);
+          _this.ui.likesRate.text(publicRate[0]);
+          return _this.ui.dislikesRate.text(publicRate[1]);
         });
         return $(selector).slideDown(300).addClass('open');
       };
@@ -62,6 +58,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return event.preventDefault();
     },
     onLikeClick: function() {
+      this.ui.likesRate.text(parseInt(this.ui.likesRate.text()) + 1);
       _.extend(this.data, {
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
@@ -70,6 +67,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return JSON.stringify(this.data);
     },
     onDislikeClick: function() {
+      this.ui.dislikesRate.text(parseInt(this.ui.dislikesRate.text()) + 1);
       _.extend(this.data, {
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),

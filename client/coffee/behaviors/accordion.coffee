@@ -18,9 +18,11 @@ define [
             @.removers.push meld.afterReturning @, "onDislikeClick", @.afterPreferenceClick
 
         ui:
-            "title"     : ".accordion-section-title"
-            "like"      : ".like-wrapper"
-            "dislike"   : ".dislike-wrapper"
+            "title"         : ".accordion-section-title"
+            "like"          : ".like-wrapper"
+            "dislike"       : ".dislike-wrapper"
+            "likesRate"     : ".likes-rate"
+            "dislikesRate"  : ".dislikes-rate"
 
         events:
             "click @ui.title"   : "onSectionTitleClick"
@@ -29,22 +31,18 @@ define [
 
         onSectionTitleClick: (event) ->
             openSection = (selector) =>
-                @.sendPublicRateRequest().then (res) ->
-                    console.debug "------------------------", res
-                    publicRate = _.reduce res.likes, (result, item) ->
-                        console.debug "item.like", item.like
+                @.sendPublicRateRequest().then (res) =>
+                    publicRate = _.reduce res.likes, (rate, item) ->
                         if item.like == true
-                            console.debug "result.likes....", result.likes
-                            result.likes.push 1
+                            rate[0]++
+                            return rate
                         else
-                            console.debug "result.dislikes....", result.dislikes
-                            result.dislikes.push 1
-                    , {likes: [], dislikes: []}
+                            rate[1]++
+                            return rate
+                    , [0, 0]
 
-                    console.debug publicRate.likes, publicRate.dislikes, publicRate
-
-                    $(selector).find(".likes-rate").text publicRate.likes.length
-                    $(selector).find(".dislikes-rate").text publicRate.dislikes.length
+                    @ui.likesRate.text publicRate[0]
+                    @ui.dislikesRate.text publicRate[1]
 
                 $(selector).slideDown(300).addClass('open')
 
@@ -69,10 +67,12 @@ define [
             event.preventDefault()
 
         onLikeClick: ->
+            @ui.likesRate.text parseInt(@ui.likesRate.text()) + 1
             _.extend @.data, {entityTYPE: @.view.getEntityType(), entityID: @.view.getEntityId(), like: true}
             return JSON.stringify @.data
 
         onDislikeClick: ->
+            @ui.dislikesRate.text parseInt(@ui.dislikesRate.text()) + 1
             _.extend @.data, {entityTYPE: @.view.getEntityType(), entityID: @.view.getEntityId(), like: false}
             return JSON.stringify @.data
 
