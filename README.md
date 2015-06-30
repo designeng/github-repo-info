@@ -70,7 +70,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 </tr>
 <tr>
   <td>AjaxRequest</td>
-  <td>Simple preloader with `hide` and `show` methods to display loading process</td>
+  <td>Wrapper for Jquery.ajax</td>
   <td> - </td>
 </tr>
 <tr>
@@ -94,6 +94,8 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 + AOP approach provided by [meld.js](https://github.com/cujojs/meld) used for separation of concerns between methods within a class.
 
 + [TemplateHelpers](http://marionettejs.com/docs/v2.4.2/marionette.view.html#viewtemplatehelpers) used for calculating and rendering fields not presented by item view model.
+
++ Templates with `.html` extention loaded by [requirejs-hbs](https://github.com/epeli/requirejs-hbs) plugin. It depends on [require-text](https://github.com/requirejs/text) plugin.
 
 + Routes "contributors", "forks" synchronized with component `list` content.
 
