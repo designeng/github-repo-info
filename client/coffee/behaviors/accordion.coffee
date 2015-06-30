@@ -27,8 +27,8 @@ define [
 
         ui:
             "title"         : ".accordion-section-title"
-            "like"          : ".like-wrapper"
-            "dislike"       : ".dislike-wrapper"
+            "like"          : "button.like-wrapper"
+            "dislike"       : "button.dislike-wrapper"
             "likesRate"     : ".likes-rate"
             "dislikesRate"  : ".dislikes-rate"
 
@@ -37,13 +37,24 @@ define [
             "click @ui.like"    : "onLikeClick"
             "click @ui.dislike" : "onDislikeClick"
 
+        enablePreferenceButtons: (mode) ->
+            if mode
+                @ui.like.removeAttr('disabled')
+                @ui.dislike.removeAttr('disabled')
+            else
+                @ui.like.attr('disabled','disabled')
+                @ui.dislike.attr('disabled','disabled')
+
         onSectionTitleClick: (event) ->
             ip      = storage.clientIp
             type    = @.view.getEntityType()
             id      = @.view.getEntityId()
 
-            new AjaxRequest(@api.isVoicable(ip, type, id), null , "GET", "application/json").done (result) ->
-
+            new AjaxRequest(@api.isVoicable(ip, type, id), null , "GET", "application/json").done (result) =>
+                if !result.voicable
+                    @enablePreferenceButtons false
+                else
+                    @enablePreferenceButtons true
 
             openSection = (selector) =>
                 @.sendPublicRateRequest().then (res) =>
@@ -92,6 +103,7 @@ define [
             return JSON.stringify @.data
 
         afterPreferenceClick: (data) ->
+            @enablePreferenceButtons false
             new AjaxRequest(@api.preference(), data, "POST", "application/json")
 
         sendPublicRateRequest: ->

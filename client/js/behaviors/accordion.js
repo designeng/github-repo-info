@@ -22,8 +22,8 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     },
     ui: {
       "title": ".accordion-section-title",
-      "like": ".like-wrapper",
-      "dislike": ".dislike-wrapper",
+      "like": "button.like-wrapper",
+      "dislike": "button.dislike-wrapper",
       "likesRate": ".likes-rate",
       "dislikesRate": ".dislikes-rate"
     },
@@ -32,13 +32,28 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       "click @ui.like": "onLikeClick",
       "click @ui.dislike": "onDislikeClick"
     },
+    enablePreferenceButtons: function(mode) {
+      if (mode) {
+        this.ui.like.removeAttr('disabled');
+        return this.ui.dislike.removeAttr('disabled');
+      } else {
+        this.ui.like.attr('disabled', 'disabled');
+        return this.ui.dislike.attr('disabled', 'disabled');
+      }
+    },
     onSectionTitleClick: function(event) {
       var aTagElement, closeSection, currentAttrValue, id, ip, openSection, sectionId, type,
         _this = this;
       ip = storage.clientIp;
       type = this.view.getEntityType();
       id = this.view.getEntityId();
-      new AjaxRequest(this.api.isVoicable(ip, type, id), null, "GET", "application/json").done(function(result) {});
+      new AjaxRequest(this.api.isVoicable(ip, type, id), null, "GET", "application/json").done(function(result) {
+        if (!result.voicable) {
+          return _this.enablePreferenceButtons(false);
+        } else {
+          return _this.enablePreferenceButtons(true);
+        }
+      });
       openSection = function(selector) {
         _this.sendPublicRateRequest().then(function(res) {
           var publicRate;
@@ -91,6 +106,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return JSON.stringify(this.data);
     },
     afterPreferenceClick: function(data) {
+      this.enablePreferenceButtons(false);
       return new AjaxRequest(this.api.preference(), data, "POST", "application/json");
     },
     sendPublicRateRequest: function() {
