@@ -24,7 +24,7 @@ define [
 
             deletions: ->
                 return _.reduce @.weeks, (result, obj) ->
-                    return result + obj.b
+                    return result + obj.d
                 , 0
 
         behaviors:

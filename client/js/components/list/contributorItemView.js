@@ -18,7 +18,7 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
       },
       deletions: function() {
         return _.reduce(this.weeks, function(result, obj) {
-          return result + obj.b;
+          return result + obj.d;
         }, 0);
       }
     },
