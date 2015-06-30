@@ -63,5 +63,5 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
   app.on("start", function() {
     return Backbone.history.start();
   });
-  return app.start();
+  return app;
 });

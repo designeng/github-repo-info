@@ -68,4 +68,4 @@ define [
     app.on "start", () ->
         Backbone.history.start()
 
-    app.start()
+    return app

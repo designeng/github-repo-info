@@ -1,0 +1,4 @@
+define ->
+
+    Storage = {}
+    return Storage
