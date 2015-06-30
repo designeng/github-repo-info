@@ -8,6 +8,11 @@ module.exports = (grunt) ->
     port = 7788
   
     grunt.initConfig
+        nodemon:
+            dev:
+                script: 'server.js'
+                watch: ['app/*']
+            
         watch:
             coffee_app:
                 files: ['client/coffee/**/**.coffee']
@@ -83,6 +88,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks "grunt-contrib-connect"
     grunt.loadNpmTasks "grunt-contrib-concat"
     grunt.loadNpmTasks "grunt-newer"
+    grunt.loadNpmTasks "grunt-nodemon"
 
     grunt.registerTask "default", ["connect:server", "watch"]
 
@@ -91,3 +97,6 @@ module.exports = (grunt) ->
     grunt.registerTask "coffee-compile-jasmine",        ["newer:coffee:jasmine"]
 
     grunt.registerTask "server", ["connect"]
+
+    # TODO: nodemon does not watch .coffee - open issue
+    grunt.registerTask "nd", ["nodemon"]
