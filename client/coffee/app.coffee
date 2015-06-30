@@ -67,5 +67,6 @@ define [
 
     app.on "start", () ->
         Backbone.history.start()
+        window.location.hash = "#/contributors" if window.location.hash != "#/forks"
 
     return app

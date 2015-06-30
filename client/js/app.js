@@ -61,7 +61,10 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
     }
   });
   app.on("start", function() {
-    return Backbone.history.start();
+    Backbone.history.start();
+    if (window.location.hash !== "#/forks") {
+      return window.location.hash = "#/contributors";
+    }
   });
   return app;
 });
