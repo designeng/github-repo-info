@@ -67,6 +67,6 @@ define [
 
     app.on "start", () ->
         Backbone.history.start()
-        window.location.hash = "#/contributors" if window.location.hash != "#/forks"
+        appRouter.navigate "#/contributors" if Backbone.history.getFragment() != "forks"
 
     return app

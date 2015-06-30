@@ -62,8 +62,8 @@ define(["backbone", "marionette", "handlebars", "meld", "behaviors/index", "comp
   });
   app.on("start", function() {
     Backbone.history.start();
-    if (window.location.hash !== "#/forks") {
-      return window.location.hash = "#/contributors";
+    if (Backbone.history.getFragment() !== "forks") {
+      return appRouter.navigate("#/contributors");
     }
   });
   return app;

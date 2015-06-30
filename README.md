@@ -17,6 +17,24 @@ https://github-repo-info.herokuapp.com
 
 ###Structure description
 ####Client
+
++ Routes
+
+<table>
+<tr>
+  <th>Route</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td>contributors </td>
+  <td>Contributors info displayed in list component</td>
+</tr>
+<tr>
+  <td>forks</td>
+  <td>Forks info displayed in list component</td>
+</tr>
+</table>
+
 + Components
 
 <table>
@@ -67,13 +85,17 @@ https://github-repo-info.herokuapp.com
 </tr>
 </table>
 
++ `requireConfig` and `requireEnter` just two parts of `main` file and assembled together with grunt task during the development process. `requireEnter` is logic enter point for our one-page application.
+
 + Marionette.TemplateCache.prototype.compileTemplate was overridden because Handlebars template engine is used. 
 
 + Provided implementation for `Marionette.Behaviors.behaviorsLookup` to point Marionette where we stored shared Behaviors.
 
-+ `requireConfig` and `requireEnter` just two parts of `main` file and assembled together with grunt task during the development process. `requireEnter` is logic enter point for our one-page application.
-
 + AOP approach provided by [meld.js](https://github.com/cujojs/meld) used for separation of concerns between methods within a class.
+
++ [TemplateHelpers](http://marionettejs.com/docs/v2.4.2/marionette.view.html#viewtemplatehelpers) used for calculating and rendering fields not presented by item view model.
+
++ Routes "contributors", "forks" synchronized with component `list` content.
 
 ####Server
 + Api
