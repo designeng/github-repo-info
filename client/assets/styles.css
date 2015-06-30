@@ -146,12 +146,16 @@ a {
     padding-bottom: 15px;
 }
 
-button.like{
+button.preference {
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
 
+button.like{
+}
+
 button.dislike {
-    cursor: pointer;
     margin-top: 12px;
 }
 
