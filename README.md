@@ -4,7 +4,7 @@
 Tracking repo forks and contributors info.
 
 ###Demo
-https://github-repo-info.herokuapp.com
+SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on heroku.
 
 ###Development
 + Client built on the top of Marionette.js `2.4.2v`.
