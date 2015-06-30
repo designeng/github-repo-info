@@ -25,19 +25,23 @@ https://github-repo-info.herokuapp.com
 <table>
 <tr>
   <th>Route</th>
-  <th>METODS</th>
+  <th>HTTP METODS</th>
+  <th>Controller method</th>
 </tr>
 <tr>
   <td>/api/likes</td>
   <td>POST, GET</td>
+  <td>LikeController.get</td>
 </tr>
 <tr>
   <td>/api/likes/:ip/:type/:id</td>
   <td>GET</td>
+  <td>LikeController.isAbleToVoice</td>
 </tr>
 <tr>
-  <td>/api/likes/:ip/:type/:id</td>
+  <td>/api/likes/:type/:id</td>
   <td>GET</td>
+  <td>LikeController.getPublicRate</td>
 </tr>
 </table>
 
