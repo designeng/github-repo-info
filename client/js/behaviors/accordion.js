@@ -50,7 +50,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     onDislikeClick: function() {
       var data;
       data = {
-        clientIp: storage.clientIp,
+        clientIP: storage.clientIp,
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
         like: false

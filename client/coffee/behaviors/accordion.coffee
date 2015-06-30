@@ -58,7 +58,7 @@ define [
 
         onDislikeClick: ->
             data = 
-                clientIp    : storage.clientIp
+                clientIP    : storage.clientIp
                 entityTYPE  : @.view.getEntityType()
                 entityID    : @.view.getEntityId()
                 like        : false
