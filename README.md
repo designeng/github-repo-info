@@ -7,7 +7,7 @@ Tracking repo forks and contributors info.
 https://github-repo-info.herokuapp.com
 
 ###Development
-+ Client built on the top of Marionette.js.
++ Client built on the top of Marionette.js `2.4.2v`.
 
 + Server api: Express.js 4, Sequelize ORM 3v, Sqlite3
 
@@ -66,6 +66,14 @@ https://github-repo-info.herokuapp.com
   <td> - </td>
 </tr>
 </table>
+
++ Marionette.TemplateCache.prototype.compileTemplate was overridden because Handlebars template engine is used. 
+
++ Provided implementation for `Marionette.Behaviors.behaviorsLookup` to point Marionette where we stored shared Behaviors.
+
++ `requireConfig` and `requireEnter` just two parts of `main` file and assembled together with grunt task during the development process. `requireEnter` is logic enter point for our one-page application.
+
++ 
 
 ####Server
 + Api
