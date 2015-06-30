@@ -103,6 +103,7 @@ a {
 .contributor-like-block {
     width: 20px;
     padding-top: 20px;
+    margin-right: 10px;
     float: left;
 }
 
@@ -116,6 +117,12 @@ a {
 .fork-rate-block {
     width: 20px;
     padding-top: 10px;
+    float: left;
+}
+
+.contributor-rate-block {
+    width: 20px;
+    padding-top: 20px;
     float: left;
 }
 
