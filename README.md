@@ -21,12 +21,25 @@ https://github-repo-info.herokuapp.com
 
 ####Server
 + Api
-| Route                     | METODS        |
-| -------------             | ------------- |
-| /api/likes                | POST, GET     |
-| /api/likes/:ip/:type/:id  | GET           |
-| /api/likes/:type/:id      | GET           |
 
+<table>
+<tr>
+  <th>Route</th>
+  <th>METODS</th>
+</tr>
+<tr>
+  <td>/api/likes</td>
+  <td>POST, GET</td>
+</tr>
+<tr>
+  <td>/api/likes/:ip/:type/:id</td>
+  <td>GET</td>
+</tr>
+<tr>
+  <td>/api/likes/:ip/:type/:id</td>
+  <td>GET</td>
+</tr>
+</table>
 
 ###Browsers compatibility
 Tested in Chrome (v42), Safari (v7.0), Firefox (v37).
