@@ -61,3 +61,7 @@ define [
 
         afterPreferenceClick: (data) ->
             new AjaxRequest("/api/likes", data, "POST", "application/json")
+
+        onDestroy: ->
+            _.each @.removers, (remover) ->
+                remover.remove()

@@ -58,6 +58,11 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     },
     afterPreferenceClick: function(data) {
       return new AjaxRequest("/api/likes", data, "POST", "application/json");
+    },
+    onDestroy: function() {
+      return _.each(this.removers, function(remover) {
+        return remover.remove();
+      });
     }
   });
 });
