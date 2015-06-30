@@ -5,11 +5,8 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
     className: "accordion-section",
     template: contributorTemplate,
     templateHelpers: {
-      avatarSmall: function() {
+      avatar50x50: function() {
         return this.author.avatar_url + "&s=50";
-      },
-      avatarBig: function() {
-        return this.author.avatar_url + "&s=150";
       },
       additions: function() {
         return _.reduce(this.weeks, function(result, obj) {
@@ -24,6 +21,11 @@ define(["jquery", "underscore", "marionette", "hbs!components/list/contributor"]
     },
     behaviors: {
       accordion: {}
+    },
+    onBeforeRender: function() {
+      var author;
+      author = this.model.get("author");
+      return this.model.set("avatar150x150", author.avatar_url + "&s=150");
     },
     getEntityType: function() {
       return "contributor";

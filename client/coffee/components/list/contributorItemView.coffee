@@ -11,11 +11,8 @@ define [
         template: contributorTemplate
 
         templateHelpers:
-            avatarSmall: ->
+            avatar50x50: ->
                 @.author.avatar_url + "&s=50"
-
-            avatarBig: ->
-                @.author.avatar_url + "&s=150"
 
             additions: ->
                 return _.reduce @.weeks, (result, obj) ->
@@ -29,6 +26,10 @@ define [
 
         behaviors:
             accordion: {}
+
+        onBeforeRender: ->
+            author = @.model.get "author"
+            @.model.set "avatar150x150", author.avatar_url + "&s=150"
 
         getEntityType: ->
             return "contributor"
