@@ -23,8 +23,25 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       var aTagElement, closeSection, currentAttrValue, openSection, sectionId,
         _this = this;
       openSection = function(selector) {
-        _this.sendPublicRateRequest().then(function(result) {
-          return console.debug("RES:", result);
+        _this.sendPublicRateRequest().then(function(res) {
+          var publicRate;
+          console.debug("------------------------", res);
+          publicRate = _.reduce(res.likes, function(result, item) {
+            console.debug("item.like", item.like);
+            if (item.like === true) {
+              console.debug("result.likes....", result.likes);
+              return result.likes.push(1);
+            } else {
+              console.debug("result.dislikes....", result.dislikes);
+              return result.dislikes.push(1);
+            }
+          }, {
+            likes: [],
+            dislikes: []
+          });
+          console.debug(publicRate.likes, publicRate.dislikes, publicRate);
+          $(selector).find(".likes-rate").text(publicRate.likes.length);
+          return $(selector).find(".dislikes-rate").text(publicRate.dislikes.length);
         });
         return $(selector).slideDown(300).addClass('open');
       };
@@ -64,7 +81,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return new AjaxRequest("/api/likes", data, "POST", "application/json");
     },
     sendPublicRateRequest: function() {
-      return new AjaxRequest("/api/likes/" + this.view.getEntityType(), null, "GET", "application/json");
+      return new AjaxRequest("/api/likes/" + this.view.getEntityType() + "/" + this.view.getEntityId(), null, "GET", "application/json");
     },
     onDestroy: function() {
       return _.each(this.removers, function(remover) {

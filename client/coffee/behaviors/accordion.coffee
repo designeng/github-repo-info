@@ -29,8 +29,22 @@ define [
 
         onSectionTitleClick: (event) ->
             openSection = (selector) =>
-                @.sendPublicRateRequest().then (result) ->
-                    console.debug "RES:", result
+                @.sendPublicRateRequest().then (res) ->
+                    console.debug "------------------------", res
+                    publicRate = _.reduce res.likes, (result, item) ->
+                        console.debug "item.like", item.like
+                        if item.like == true
+                            console.debug "result.likes....", result.likes
+                            result.likes.push 1
+                        else
+                            console.debug "result.dislikes....", result.dislikes
+                            result.dislikes.push 1
+                    , {likes: [], dislikes: []}
+
+                    console.debug publicRate.likes, publicRate.dislikes, publicRate
+
+                    $(selector).find(".likes-rate").text publicRate.likes.length
+                    $(selector).find(".dislikes-rate").text publicRate.dislikes.length
 
                 $(selector).slideDown(300).addClass('open')
 
@@ -66,7 +80,7 @@ define [
             new AjaxRequest("/api/likes", data, "POST", "application/json")
 
         sendPublicRateRequest: ->
-            new AjaxRequest("/api/likes/" + @.view.getEntityType(), null , "GET", "application/json")
+            new AjaxRequest("/api/likes/" + @.view.getEntityType() + "/" + @.view.getEntityId(), null , "GET", "application/json")
 
         onDestroy: ->
             _.each @.removers, (remover) ->

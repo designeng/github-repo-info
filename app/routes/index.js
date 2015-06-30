@@ -9,7 +9,7 @@ router.route("/likes")
     .post(LikeController.post)
     .get(LikeController.get);
 
-router.route("/likes/:type")
+router.route("/likes/:type/:id")
     .get(LikeController.getPublicRate);
 
 module.exports = router;
