@@ -22,8 +22,8 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     },
     ui: {
       "title": ".accordion-section-title",
-      "like": "button.like-wrapper",
-      "dislike": "button.dislike-wrapper",
+      "like": "button.like",
+      "dislike": "button.dislike",
       "likesRate": ".likes-rate",
       "dislikesRate": ".dislikes-rate"
     },

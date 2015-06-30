@@ -139,29 +139,12 @@ a {
     margin-right: 10px;
 }
 
-.like-wrapper {
+button.like{
     cursor: pointer;
 }
 
-.dislike-wrapper {
-    padding-top: 10px;
+button.dislike {
     cursor: pointer;
-}
-
-.like {
-    width: 20px;
-    height: 20px;
-}
-
-.dislike {
-    width: 20px;
-    height: 20px;
-    -moz-transform: scaleY(-1);
-    -o-transform: scaleY(-1);
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-    filter: FlipV;
-    -ms-filter: "FlipV";
 }
 
 /* ========== switcher component ========== */
