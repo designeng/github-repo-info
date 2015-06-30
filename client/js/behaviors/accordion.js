@@ -2,6 +2,9 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
   var AccordionBehavior;
   return AccordionBehavior = Marionette.Behavior.extend({
     initialize: function() {
+      this.data = {
+        clientIP: storage.clientIp
+      };
       this.removers = [];
       this.removers.push(meld.afterReturning(this, "onLikeClick", this.afterPreferenceClick));
       return this.removers.push(meld.afterReturning(this, "onDislikeClick", this.afterPreferenceClick));
@@ -38,24 +41,20 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return event.preventDefault();
     },
     onLikeClick: function() {
-      var data;
-      data = {
-        clientIP: storage.clientIp,
+      _.extend(this.data, {
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
         like: true
-      };
-      return JSON.stringify(data);
+      });
+      return JSON.stringify(this.data);
     },
     onDislikeClick: function() {
-      var data;
-      data = {
-        clientIP: storage.clientIp,
+      _.extend(this.data, {
         entityTYPE: this.view.getEntityType(),
         entityID: this.view.getEntityId(),
         like: false
-      };
-      return JSON.stringify(data);
+      });
+      return JSON.stringify(this.data);
     },
     afterPreferenceClick: function(data) {
       return new AjaxRequest("/api/likes", data, "POST", "application/json");

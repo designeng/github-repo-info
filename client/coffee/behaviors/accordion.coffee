@@ -10,6 +10,9 @@ define [
     AccordionBehavior = Marionette.Behavior.extend
 
         initialize: ->
+            @.data = 
+                clientIP    : storage.clientIp
+
             @.removers = []
             @.removers.push meld.afterReturning @, "onLikeClick", @.afterPreferenceClick
             @.removers.push meld.afterReturning @, "onDislikeClick", @.afterPreferenceClick
@@ -49,20 +52,12 @@ define [
             event.preventDefault()
 
         onLikeClick: ->
-            data = 
-                clientIP    : storage.clientIp
-                entityTYPE  : @.view.getEntityType()
-                entityID    : @.view.getEntityId()
-                like        : true
-            return JSON.stringify data
+            _.extend @.data, {entityTYPE: @.view.getEntityType(), entityID: @.view.getEntityId(), like: true}
+            return JSON.stringify @.data
 
         onDislikeClick: ->
-            data = 
-                clientIP    : storage.clientIp
-                entityTYPE  : @.view.getEntityType()
-                entityID    : @.view.getEntityId()
-                like        : false
-            return JSON.stringify data
+            _.extend @.data, {entityTYPE: @.view.getEntityType(), entityID: @.view.getEntityId(), like: false}
+            return JSON.stringify @.data
 
         afterPreferenceClick: (data) ->
             new AjaxRequest("/api/likes", data, "POST", "application/json")
