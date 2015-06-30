@@ -107,14 +107,14 @@ a {
 }
 
 .contributor-like-block {
-    width: 20px;
+    width: 25px;
     padding-top: 20px;
     margin-right: 10px;
     float: left;
 }
 
 .fork-like-block {
-    width: 20px;
+    width: 25px;
     padding-top: 10px;
     margin-right: 10px;
     float: left;
@@ -147,7 +147,7 @@ a {
 }
 
 button.preference {
-    width: 20px;
+    width: 25px;
     height: 20px;
     cursor: pointer;
 }
