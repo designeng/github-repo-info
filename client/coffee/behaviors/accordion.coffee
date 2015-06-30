@@ -28,7 +28,10 @@ define [
             "click @ui.dislike" : "onDislikeClick"
 
         onSectionTitleClick: (event) ->
-            openSection = (selector) ->
+            openSection = (selector) =>
+                @.sendPublicRateRequest().then (result) ->
+                    console.debug "RES:", result
+                    
                 $(selector).slideDown(300).addClass('open')
 
             closeSection = ->
@@ -61,6 +64,9 @@ define [
 
         afterPreferenceClick: (data) ->
             new AjaxRequest("/api/likes", data, "POST", "application/json")
+
+        sendPublicRateRequest: ->
+            new AjaxRequest("/api/likes", {entityTYPE: @.view.getEntityType()} , "GET", "application/json")
 
         onDestroy: ->
             _.each @.removers, (remover) ->

@@ -20,8 +20,12 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       "click @ui.dislike": "onDislikeClick"
     },
     onSectionTitleClick: function(event) {
-      var aTagElement, closeSection, currentAttrValue, openSection, sectionId;
+      var aTagElement, closeSection, currentAttrValue, openSection, sectionId,
+        _this = this;
       openSection = function(selector) {
+        _this.sendPublicRateRequest().then(function(result) {
+          return console.debug("RES:", result);
+        });
         return $(selector).slideDown(300).addClass('open');
       };
       closeSection = function() {
@@ -58,6 +62,11 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
     },
     afterPreferenceClick: function(data) {
       return new AjaxRequest("/api/likes", data, "POST", "application/json");
+    },
+    sendPublicRateRequest: function() {
+      return new AjaxRequest("/api/likes", {
+        entityTYPE: this.view.getEntityType()
+      }, "GET", "application/json");
     },
     onDestroy: function() {
       return _.each(this.removers, function(remover) {
