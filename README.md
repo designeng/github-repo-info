@@ -76,7 +76,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 <tr>
   <td>ClientIp</td>
   <td>Client ip for preventing repeated likes/dislikes</td>
-  <td>ClientIp is defined on client side for simplicity via `https://api.ipify.org` service (TODO: define it with <a href="https://github.com/un33k/node-ipware">node-ipware</a> middleware on the server side).</td>
+  <td>ClientIp is defined on client side for simplicity via <a href="https://api.ipify.org">ipify</a> service (TODO: define it with <a href="https://github.com/un33k/node-ipware">node-ipware</a> middleware on the server side).</td>
 </tr>
 <tr>
   <td>Storage</td>
