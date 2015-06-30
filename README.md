@@ -57,7 +57,7 @@ https://github-repo-info.herokuapp.com
 </tr>
 <tr>
   <td>ClientIp</td>
-  <td>ClientIp is defined on client side for simplicity (TODO: it can be defined with [node-ipware](https://github.com/un33k/node-ipware) on the server side).</td>
+  <td>ClientIp is defined on client side for simplicity (TODO: it can be defined with <a href="https://github.com/un33k/node-ipware">node-ipware</a> on the server side).</td>
   <td> - </td>
 </tr>
 <tr>
