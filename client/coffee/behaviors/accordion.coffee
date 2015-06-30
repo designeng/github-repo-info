@@ -31,7 +31,7 @@ define [
             openSection = (selector) =>
                 @.sendPublicRateRequest().then (result) ->
                     console.debug "RES:", result
-                    
+
                 $(selector).slideDown(300).addClass('open')
 
             closeSection = ->
@@ -66,7 +66,7 @@ define [
             new AjaxRequest("/api/likes", data, "POST", "application/json")
 
         sendPublicRateRequest: ->
-            new AjaxRequest("/api/likes", {entityTYPE: @.view.getEntityType()} , "GET", "application/json")
+            new AjaxRequest("/api/likes/" + @.view.getEntityType(), null , "GET", "application/json")
 
         onDestroy: ->
             _.each @.removers, (remover) ->

@@ -64,9 +64,7 @@ define(["jquery", "underscore", "marionette", "meld", "utils/ajax/ajaxRequest", 
       return new AjaxRequest("/api/likes", data, "POST", "application/json");
     },
     sendPublicRateRequest: function() {
-      return new AjaxRequest("/api/likes", {
-        entityTYPE: this.view.getEntityType()
-      }, "GET", "application/json");
+      return new AjaxRequest("/api/likes/" + this.view.getEntityType(), null, "GET", "application/json");
     },
     onDestroy: function() {
       return _.each(this.removers, function(remover) {

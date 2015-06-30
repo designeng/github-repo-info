@@ -31,6 +31,12 @@ var LikeController = {
             models.Like.findAll().then(function(likes) {
                 res.json({ likes: likes });
             });
+        },
+
+    getPublicRate: function(req, res) {
+            models.Like.findAll({where: {entityTYPE: req.params.type}}).then(function(likes) {
+                res.json({ likes: likes });
+            });
         }
 }
 
