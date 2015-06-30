@@ -157,7 +157,6 @@ button.dislike {
     position: absolute;
     z-index: 10;
     margin: 18px 0 0 0;
-    *zoom: 1;
     font-weight: 400;
 }
 
