@@ -1,16 +1,11 @@
 "use strict";
 
-var get_ip = require('ipware')().get_ip;
 var models  = require('../models');
 
 var LikeController = {
 
     post: function(req, res) {
-            var ip_info = get_ip(req);
-
-            console.log("ip_info", ip_info);
-
-            var ip = ip_info.clientIp;
+            var ip          = req.param('clientIP');
             var entityTYPE  = req.param('entityTYPE');
             var entityID    = req.param('entityID');
             var like        = req.param('like');
