@@ -111,7 +111,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask "default", ["dataMainAttr:dev", "connect:server", "watch"]
 
-    grunt.registerTask "build", ["dataMainAttr:prod", "requirejs:compile", "default"]
+    grunt.registerTask "build", ["dataMainAttr:prod", "requirejs:compile"]
 
     # compilation
     grunt.registerTask "coffee-compile-app", ["newer:coffee:app"]
