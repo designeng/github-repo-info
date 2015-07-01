@@ -11,7 +11,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 
 + Server api: Express.js 4, Sequelize ORM 3v, Sqlite3
 
-+ After installing npm and bower dependencies (`npm install`, `bower install`), run `grunt` default task command for client `.coffee` compilation. 
++ After installing npm and bower dependencies (`npm install`, `bower install`), run `grunt` default task command for client `.coffee` compilation. Uncomment for connect livereload interaction `livereload.js` script line in `index.html`.
 
 + Grunt task `grunt nodemon` starts express server, so just open in your favorite browser `http://localhost:8080`. All api `.js` files under `nodedemon` watch till the development process.
 
