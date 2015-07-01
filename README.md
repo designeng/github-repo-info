@@ -99,7 +99,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 
 + Routes "contributors", "forks" synchronized with component `list` content.
 
-+ Owner & repo name hardcoded now in `contributors` and `forks` collections url, so actually it works only with `marionettejs/backbone.marionette` repo. But later moving to a more general solution it could be determined in special component for toggling `owner/repo` fragments.
++ Owner & repo name hardcoded now in `contributors` and `forks` collections url, so actually it works only with `marionettejs/backbone.marionette` repo. But later moving to a more general solution `owner/repo` fragments could be determined in a separate component to switch between repositories.
 
 ####Server
 + Api
