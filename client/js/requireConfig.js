@@ -1,6 +1,8 @@
 require.config({
   baseUrl: "/js",
-  paths: {},
+  paths: {
+    "handlebars-compiler": "vendors/handlebars/handlebars"
+  },
   packages: [
     {
       name: "backbone",

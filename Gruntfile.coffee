@@ -6,6 +6,8 @@ folderMount = (connect, point) ->
 module.exports = (grunt) ->
 
     port = 7788
+
+    indexPath = "client/index.html"
   
     grunt.initConfig
         nodemon:
@@ -78,20 +80,43 @@ module.exports = (grunt) ->
                 src: ["client/js/requireConfig.js", "test/jasmine/js/SpecRunner.js"]
                 dest: "test/jasmine/js/superSpecRunner.js"
 
+        requirejs:
+            compile:
+                options:
+                    baseUrl: "client/js/"
+                    mainConfigFile: "client/js/requireConfig.js"
+                    name: "main"
+                    out: "client/build/main.js"
+
+        dataMainAttr:
+            dev:
+                from: /build\/main/g
+                to: "js/main"
+                indexPath: indexPath
+            prod:
+                from: /js\/main/g
+                to: "build/main"
+                indexPath: indexPath
 
     grunt.loadNpmTasks "grunt-contrib-watch"
     grunt.loadNpmTasks "grunt-contrib-coffee"
     grunt.loadNpmTasks "grunt-contrib-connect"
     grunt.loadNpmTasks "grunt-contrib-concat"
+    grunt.loadNpmTasks "grunt-contrib-requirejs"
     grunt.loadNpmTasks "grunt-newer"
     grunt.loadNpmTasks "grunt-nodemon"
 
-    grunt.registerTask "default", ["connect:server", "watch"]
+    # ["dataMainAttr"] tasks
+    grunt.loadTasks "tasks"
+
+    grunt.registerTask "default", ["dataMainAttr:dev", "connect:server", "watch"]
+
+    grunt.registerTask "build", ["dataMainAttr:prod", "requirejs:compile", "default"]
 
     # compilation
-    grunt.registerTask "coffee-compile-app",            ["newer:coffee:app"]
+    grunt.registerTask "coffee-compile-app", ["newer:coffee:app"]
 
     grunt.registerTask "server", ["connect"]
 
     # TODO: nodemon does not watch .coffee - open issue
-    grunt.registerTask "nodemon", ["nodemon"]
+    grunt.registerTask "ndm", ["nodemon"]

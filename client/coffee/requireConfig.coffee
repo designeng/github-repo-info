@@ -3,7 +3,7 @@ require.config
     baseUrl: "/js"
 
     paths: {
-
+        "handlebars-compiler": "vendors/handlebars/handlebars"
     }
 
     packages: [
