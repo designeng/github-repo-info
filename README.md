@@ -98,7 +98,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 
 + [TemplateHelpers](http://marionettejs.com/docs/v2.4.2/marionette.view.html#viewtemplatehelpers) used for calculating and rendering fields not presented by item view model.
 
-+ Templates with `.html` extention loaded by [requirejs-hbs](https://github.com/epeli/requirejs-hbs) plugin. It depends on [require-text](https://github.com/requirejs/text) plugin.
++ Templates with `.html` extention loaded by [requirejs-hbs](https://github.com/epeli/requirejs-hbs) plugin. It depends on [require-text](https://github.com/requirejs/text) plugin. Path to `handlebars-compiler` defined in requirejs config.
 
 + Routes "contributors", "forks" synchronized with component `list` content.
 
