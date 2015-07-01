@@ -13,7 +13,7 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 
 + After installing npm and bower dependencies (`npm install`, `bower install`), run `grunt` default task command for client `.coffee` compilation. 
 
-+ Grunt task `grunt nd` starts express server, so just open in your favorite browser `http://localhost:8080`. All api `.js` files under `nodedemon` watch till the development process.
++ Grunt task `grunt nodemon` starts express server, so just open in your favorite browser `http://localhost:8080`. All api `.js` files under `nodedemon` watch till the development process.
 
 ###Structure description
 ####Client
