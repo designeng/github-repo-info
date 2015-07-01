@@ -115,8 +115,8 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 </tr>
 <tr>
   <td>/api/likes</td>
-  <td>POST, GET</td>
-  <td>LikeController.get</td>
+  <td>POST</td>
+  <td>LikeController.post</td>
 </tr>
 <tr>
   <td>/api/likes/:ip/:type/:id</td>

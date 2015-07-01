@@ -31,12 +31,6 @@ var LikeController = {
             });
         },
 
-    get: function(req, res) {
-            models.Like.findAll().then(function(likes) {
-                res.json({ likes: likes });
-            });
-        },
-
     isAbleToVoice: function(req, res) {
             models.Like.findAll({where: {ip: req.params.ip, entityTYPE: req.params.type, entityID: req.params.id}}).then(function(likes) {
                 if(likes.length === 0){
