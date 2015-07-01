@@ -15,6 +15,9 @@ SPA deployed as [github-repo-info](https://github-repo-info.herokuapp.com) on he
 
 + Grunt task `grunt ndm` starts express server, so just open in your favorite browser `http://localhost:8080`. All api `.js` files under `nodedemon` watch till the development process.
 
+###Deploy
++ Grunt task `grunt build` should be invoked before deploy to remote server. It will run all nessesary tasks `dataMainAttr:prod` (rewriting `data-main` attribute in index.html), `requirejs:compile` (building all js-source into single `main` file).
+
 ###Structure description
 ####Client
 
